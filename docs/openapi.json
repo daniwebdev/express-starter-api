@@ -1,0 +1,72 @@
+{
+  "openapi": "3.0.0",
+  "info": {
+    "title": "Your App Name",
+    "version": "1.0",
+    "description": "Nulla est duis amet fugiat nostrud occaecat deserunt amet occaecat. Consectetur laborum pariatur aute tempor fugiat sint. Incididunt ex irure pariatur ipsum sunt veniam. Adipisicing voluptate consequat excepteur esse."
+  },
+  "servers": [
+    {
+      "url": "http://localhost:3000",
+      "description": "Env Local"
+    }
+  ],
+  "tags": [
+    {
+      "name": "Auth"
+    }
+  ],
+  "security": [
+    {
+      "X-API-KEY": []
+    }
+  ],
+  "paths": {
+    "/auth/login": {
+      "post": {
+        "tags": ["Auth"],
+        "summary": "Get token authentication",
+        "description": "Get token with dynamic condition, if user has been registred then give token and if not, don't.",
+        "requestBody": {
+          "required": true,
+          "description": "Data dikirim dalam body format json",
+          "content": {
+            "aplication/json": {
+              "schema": {},
+              "example": {
+                "email": "dani.webdev@gmail.com",
+                "provider_token": "",
+                "provider": "google"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "schema": {}
+            }
+          }
+        }
+      }
+    }
+
+  },
+  "components": {
+    "securitySchemes": {
+      "X-API-KEY": {
+        "in": "header",
+        "description": "Api Key untuk verifikasi di server-side (a9de0880-7b95-437a-91f7-d85a743d6b5b)",
+        "name": "X-API-KEY",
+        "type": "apiKey"
+      },
+      "bearerAuth": {
+        "type": "http",
+        "scheme": "bearer",
+        "description": "Bearer Token",
+        "bearerFormat": "JWT"
+      }
+    }
+  }
+}

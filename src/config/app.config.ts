@@ -1,0 +1,1 @@
+export const APP_JWT_SECRET_KEY = process.env.APP_SECRET_KEY || 'randomkey';
